@@ -8,10 +8,10 @@ const videoplayerCurrentTime = JSON.parse(
   localStorage.getItem('videoplayer-current-time')
 );
 
-videoplayerCurrentTime && player.setCurrentTime(videoplayerCurrentTime.seconds);
+videoplayerCurrentTime && player.setCurrentTime(videoplayerCurrentTime);
 
-function handlePlaybackTime(e) {
-  localStorage.setItem('videoplayer-current-time', JSON.stringify(e));
+function handlePlaybackTime({ seconds }) {
+  localStorage.setItem('videoplayer-current-time', JSON.stringify(seconds));
 }
 
 player.on('timeupdate', throttle(handlePlaybackTime, 2000));
